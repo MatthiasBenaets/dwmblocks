@@ -1,0 +1,16 @@
+#!/bin/sh
+
+DISTRO="$(cat /etc/os-release | sed -n 1p | awk -F '"' '{print $2}')"
+
+if [ "DISTRO" = "void" ]; then
+	updates=$(xbps-install -Suvn | wc -l)
+
+elif [ "DISTRO" = "Arch Linux" ]; then
+	updatesarch="$(checkupdates 2> /dev/null | wc -l)"
+	updatesaur="$(yay -Qum 2> /dev/null | wc -l)"
+	updates=$(("$updatesarch" + "$updatesaur"))
+fi
+
+#icon=""
+#printf " %s \\n"  "$icon" "$updates"
+echo " $((updates))"

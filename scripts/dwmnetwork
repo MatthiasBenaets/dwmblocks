@@ -1,0 +1,15 @@
+#!/bin/bash
+
+ETHERNET=$(ip -o link show | awk -F': ' '{print $2}' | grep 'enp*\|eth*')
+WIRELESS=$(ip -o link show | awk -F': ' '{print $2}' | grep 'wl*')
+
+ETH=$(cat /sys/class/net/$ETHERNET/operstate)
+WIFI=$(cat /sys/class/net/$WIRELESS/operstate)
+
+if [ "$ETH" = "up" ]; then
+	echo " "
+elif [ "$WIFI" = "up" ]; then
+	echo " "
+elif [ "$ETH" = "down" ] && [ "$WIFI" = "down" ]; then
+	echo " "
+fi

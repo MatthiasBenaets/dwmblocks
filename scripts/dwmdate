@@ -1,0 +1,4 @@
+#!/bin/bash
+
+tme="$(date +"%a %d %b")"
+printf " %s\n" "$tme"

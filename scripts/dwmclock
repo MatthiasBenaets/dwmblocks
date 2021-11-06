@@ -1,0 +1,6 @@
+#!/bin/bash 
+
+dte="$(date +"%H:%M")"
+#printf "%s %s\n" "$dte |"
+echo "$dte"
+

@@ -1,0 +1,7 @@
+original
+*.orig
+*.rej
+*.swp
+*.o
+blocks.h
+dwmblocks
