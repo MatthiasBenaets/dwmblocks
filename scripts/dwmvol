@@ -13,3 +13,7 @@ MUTE=$(pacmd list-sinks | awk '/muted/ {print $2 }')
 	elif [ "$AUDIO" = 0 ]; then
 		echo " $AUDIO"
 	fi
+
+case $BUTTON in
+	1) $TERMINAL -c "pulsemixer" -e 'pulsemixer'
+esac

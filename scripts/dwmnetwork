@@ -13,3 +13,7 @@ elif [ "$WIFI" = "up" ]; then
 elif [ "$ETH" = "down" ] && [ "$WIFI" = "down" ]; then
 	echo " "
 fi
+
+case $BUTTON in
+	1) $TERMINAL -e sh -c 'nmcli device wifi list; sh'
+esac
