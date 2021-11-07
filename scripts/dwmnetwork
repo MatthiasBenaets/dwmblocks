@@ -15,5 +15,5 @@ elif [ "$ETH" = "down" ] && [ "$WIFI" = "down" ]; then
 fi
 
 case $BUTTON in
-	1) $TERMINAL -e sh -c 'nmcli device wifi list; sh'
+	1) $TERMINAL -e sh -c 'nmcli device wifi list && echo "nmcli device wifi connect \$SSID password \"\$PASS\" "; sh'
 esac
