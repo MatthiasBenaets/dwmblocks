@@ -6,6 +6,10 @@
 - [autostart](https://dwm.suckless.org/patches/autostart/): [dwm-autostart-20210120-cb3f58a.diff](https://dwm.suckless.org/patches/autostart/dwm-autostart-20210120-cb3f58a.diff) 
 
 OR
-- [dwm](https://www.github.com/matthiasbenaets/dwm) 
+- [dwm](https://www.github.com/matthiasbenaets/dwm)
+
+AND
+- gotop
+- xorg xclock
 ## To Do
 - TBC

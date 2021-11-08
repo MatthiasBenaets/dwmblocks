@@ -1,5 +1,11 @@
 #!/bin/bash
 
+case $BUTTON in
+	#1) $TERMINAL -e sh -c 'nmcli device wifi list && echo "nmcli device wifi connect \$SSID password \"\$PASS\" "; sh'
+	1)  $TERMINAL -c "nmtui" -e 'nmtui' ;;
+	3)  $TERMINAL -e "$EDITOR" "$0" ;;
+esac
+
 ETHERNET=$(ip -o link show | awk -F': ' '{print $2}' | grep 'enp*\|eth*')
 WIRELESS=$(ip -o link show | awk -F': ' '{print $2}' | grep 'wl*')
 
@@ -13,8 +19,3 @@ elif [ "$WIFI" = "up" ]; then
 elif [ "$ETH" = "down" ] && [ "$WIFI" = "down" ]; then
 	echo " "
 fi
-
-case $BUTTON in
-	#1) $TERMINAL -e sh -c 'nmcli device wifi list && echo "nmcli device wifi connect \$SSID password \"\$PASS\" "; sh'
-	1)  $TERMINAL -c "nmtui" -e 'nmtui'
-esac

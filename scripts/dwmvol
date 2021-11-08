@@ -1,19 +1,22 @@
 #!/bin/bash
 
-#vol="$(amixer get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')" #Computer
-AUDIO=$(amixer -M get PCM | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")  #VM
+case $BUTTON in
+	1) $TERMINAL -c "pulsemixer" -e 'pulsemixer' ;;
+	3) $TERMINAL -e "$EDITOR" "$0" ;;
+esac
+
+AUDIO="$(amixer -M get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')" #Computer
+#AUDIO=$(amixer -M get PCM | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")  #VM
 MUTE=$(pacmd list-sinks | awk '/muted/ {print $2 }')
 
 	if [ "$MUTE" = "yes" ]; then
-		echo " X"
+		STATUS=" X"
 	elif [ "$AUDIO" -ge 50 ]; then
-		echo " $AUDIO"
+		STATUS=" $AUDIO"
 	elif [ "$AUDIO" -lt 50 ] && [ "$AUDIO" -gt 0 ]; then
-		echo " $AUDIO"
+		STATUS=" $AUDIO"
 	elif [ "$AUDIO" = 0 ]; then
-		echo " $AUDIO"
+		STATUS=" $AUDIO"
 	fi
 
-case $BUTTON in
-	1) $TERMINAL -c "pulsemixer" -e 'pulsemixer'
-esac
+echo $STATUS

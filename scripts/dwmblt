@@ -1,9 +1,6 @@
 #!/bin/bash
 
 case $BUTTON in
-	1) $TERMINAL ;;
+	1) blueman-manager ;;
 	3) $TERMINAL -e "$EDITOR" "$0" ;;
 esac
-
-tme="$(date +"%a %d %b")"
-printf " %s\n" "$tme"

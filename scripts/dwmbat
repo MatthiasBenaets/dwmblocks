@@ -1,5 +1,10 @@
 #!/bin/bash
 
+case $BUTTON in
+	1) $TERMINAL -e gotop ;;
+	3) $TERMINAL -e "$EDITOR" "$0" ;;
+esac
+
 AC=$(cat /sys/class/power_supply/AC/online)
 POWER=$(ls /sys/class/power_supply/ | grep BAT*)
 CHARGE=$(cat /sys/class/power_supply/$POWER/capacity)

@@ -1,6 +1,10 @@
 #!/bin/bash 
 
+case $BUTTON in
+	1) $TERMINAL -e xclock ;;
+	3) $TERMINAL -e "$EDITOR" "$0" ;;
+esac
+
 dte="$(date +"%H:%M")"
 #printf "%s %s\n" "$dte |"
 echo "$dte"
-
